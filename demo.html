@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Demo</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="jquery.floatlabel.js"></script>
+
+  <script>
+  (function(scope, $) {
+    $(function () {
+      $('.form-element')
+        .floatlabel()
+        .on('floatlabel-change', function (evt, states) {
+          console.log($('label', this).text(), states);
+        });
+    });
+  })(this, jQuery);
+  </script>
+
+  <style>
+    .form-element {
+      position: relative;
+    }
+      .form-element label {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .form-element.active label {
+        opacity: 0.25;
+      }
+      .form-element.has-content label {
+        opacity: 0;
+      }
+  </style>
+</head>
+<body>
+  <p>Open your console for debugging data.</p>
+  <p>Check out <a href="http://codepen.io/BirkAndMe/pen/gbVEKL/" style="font-size: 1.25em">http://codepen.io/BirkAndMe/pen/gbVEKL/</a>, for a better idea of the functionality.</p>
+
+  <form>
+    <div class="form-element">
+      <label for="name">Full name</label>
+      <input type="textfield" name="name">
+    </div>
+    <div class="form-element">
+      <label for="country">Country</label>
+      <input type="textfield" name="country">
+    </div>
+  </form>
+</html>
