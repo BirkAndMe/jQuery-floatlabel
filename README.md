@@ -1,5 +1,6 @@
 # jQuery-floatlabel
 Demo: http://codepen.io/BirkAndMe/pen/gbVEKL/
+(demo not working in chrome at the moment, but the actual plugin is)
 
 ## Usage
 Simply call the floatlabel() function on a jQuery element
