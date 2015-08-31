@@ -7,7 +7,6 @@
     options = $.extend({
       prefix: '',
       focus: 'focus',
-      active: 'active',
       has_content: 'has-content',
     }, options);
 
@@ -16,7 +15,6 @@
     function triggerChange($element) {
       $element.trigger('floatlabel-change', {
         focus: $element.hasClass(options.prefix + options.focus),
-        active: $element.hasClass(options.prefix + options.active),
         has_content: $element.hasClass(options.prefix + options.has_content),
       });
     }
@@ -25,30 +23,20 @@
     return this.each(function() {
       var
       	$container = $(this),
-        $input = $('input', this);
-
-      // Bail out if there's no $input.
-      if ($input.length === 0) {
-        return;
-      }
+        $input = $('input, select', this);
 
       // Setup all the events on the input field.
       $input
-        // Always add the FOCUS and ACTIVE class when the element is in focus.
+        // Always add the FOCUS class when the element is in focus.
         .bind('focus.floatlabel', function () {
           $container
-            .addClass(options.prefix + options.focus)
-            .addClass(options.prefix + options.active);
+            .addClass(options.prefix + options.focus);
           triggerChange($container);
         })
 
-        // On blur remove the FOCUS class no matter what, but keep the ACTIVE
+        // On blur remove the FOCUS class no matter what.
         // class if there's any content.
         .bind('blur.floatlabel', function () {
-          if (!hasContent($input)) {
-            $container.removeClass(options.prefix + options.active);
-          }
-
           $container.removeClass(options.prefix + options.focus);
           triggerChange($container);
       	})
@@ -56,7 +44,7 @@
         // Update the HAS_CONTENT class depending on if there's any content in
         // the element.
       	.bind('change.floatlabel keyup.floatlabel blur.floatlabel keydown.floatlabel', function () {
-        	if (hasContent($input)) {
+        	if ($input.val() !== '') {
             if (!$container.hasClass(options.prefix + options.has_content)) {
               $container.addClass(options.prefix + options.has_content);
               triggerChange($container);
@@ -74,9 +62,4 @@
         .triggerHandler('blur.floatlabel');
     });
   };
-
-  // Private static function, that tells us if the element has any content.
-  function hasContent($element) {
-    return $element.val() !== '';
-  }
 })(this, jQuery);

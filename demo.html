@@ -26,11 +26,15 @@
         top: 0;
         left: 0;
       }
-      .form-element.active label {
+      .form-element.focus label {
         opacity: 0.25;
       }
       .form-element.has-content label {
         opacity: 0;
+      }
+      .form-element select,
+      .form-element input {
+        width: 200px;
       }
   </style>
 </head>
@@ -41,11 +45,20 @@
   <form>
     <div class="form-element">
       <label for="name">Full name</label>
-      <input type="textfield" name="name">
+      <input type="textfield" name="name" />
     </div>
     <div class="form-element">
       <label for="country">Country</label>
-      <input type="textfield" name="country">
+      <input type="textfield" name="country" />
+    </div>
+    <div class="form-element">
+      <label for="dropper">Dropper</label>
+      <select name="dropper">
+        <option></option>
+        <option>first</option>
+        <option>second</option>
+        <option>third</option>
+      </select>
     </div>
   </form>
 </html>
