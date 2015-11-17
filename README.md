@@ -10,7 +10,7 @@ $(function () {
 });
 ```
 
-Now you can use the 3 floatlabel classes to style the elements:
+Now you can use the 2 floatlabel classes to style the elements:
 ```css
 .form-element {
   /* The normal state. */
@@ -21,11 +21,7 @@ Now you can use the 3 floatlabel classes to style the elements:
 .form-element.has-content {
   /* The element has content. */
 }
-.form-element.active {
-  /* The element is active, which means it's either in focus, or it has content. */
-}
 ```
-The ```.active``` class is just a quick way of combining the ```.focus``` and ```.has-content``` class into one.
 
 ### Handling changes in JavaScript
 An event will be triggered when a floatlabel element changes state.
